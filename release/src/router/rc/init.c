@@ -422,7 +422,7 @@ wl_defaults(void)
 				nvram_set(strcat_r(prefix, "bw_dl", tmp), "");
 				nvram_set(strcat_r(prefix, "bw_ul", tmp), "");
 			}
-			
+
 			if (!nvram_get(strcat_r(prefix, "ssid", tmp))) {
 				pssid = nvram_default_get(strcat_r(pprefix, "ssid", tmp));
 				if (strlen(pssid))
@@ -1281,16 +1281,16 @@ misc_defaults(int restore_defaults)
 #if defined(RTCONFIG_APP_PREINSTALLED) || defined(RTCONFIG_APP_NETINSTALLED)
 #if defined(RTCONFIG_BCMARM)  && (!defined(RTCONFIG_NEW_APP_ARM))
 	nvram_set("apps_ipkg_old", "0");
-	nvram_set("apps_new_arm", "0");//2016.7.1 sherry new oleg arm 
+	nvram_set("apps_new_arm", "0");//2016.7.1 sherry new oleg arm
 	nvram_set("apps_install_folder", "asusware.arm");
 	nvram_set("apps_ipkg_server", "http://nw-dlcdnet.asus.com/asusware/arm/stable");
 #elif defined(RTCONFIG_NEW_APP_ARM) //2016.7.1 sherry new oleg arm{
 	nvram_set("apps_ipkg_old", "0");
-	nvram_set("apps_new_arm", "1"); 
+	nvram_set("apps_new_arm", "1");
 	nvram_set("apps_install_folder", "asusware.arm");
 	nvram_set("apps_ipkg_server", "http://nw-dlcdnet.asus.com/asusware/arm/stable");
 	//end sherry add}
-#elif defined(RTCONFIG_QCA) 
+#elif defined(RTCONFIG_QCA)
 	nvram_set("apps_ipkg_old", "0");
 	nvram_set("apps_new_arm", "0"); //2016.7.1 sherry new oleg arm
 	nvram_set("apps_install_folder", "asusware.mipsbig");
@@ -1669,7 +1669,7 @@ static void handle_reap(int sig)
 
 #ifdef RTCONFIG_SWMODE_SWITCH
 /*
- * * Check 
+ * * Check
  * * 1.Phy Switch status.
  * * 2.if default, set the lan proto.
  * * */
@@ -2932,7 +2932,7 @@ int init_nvram(void)
 		//nvram_set("vlan2hwname", "et0");  // vlan. used to get "%smacaddr" for compare and find parent interface.
 		nvram_set("lan_ifname", "br0");
 		set_basic_ifname_vars("eth0", "eth1", "ath0", "ath1", "usb", "eth1", NULL, "eth2", NULL, 0);
-		
+
 		nvram_set_int("btn_rst_gpio", 4|GPIO_ACTIVE_LOW);
 		nvram_set_int("btn_wps_gpio", 63|GPIO_ACTIVE_LOW);
 		nvram_set_int("led_usb_gpio", 0);
@@ -3003,7 +3003,7 @@ int init_nvram(void)
 		//nvram_set("vlan2hwname", "et0");  // vlan. used to get "%smacaddr" for compare and find parent interface.
 		nvram_set("lan_ifname", "br0");
 		set_basic_ifname_vars("eth0", "eth1", "ath0", "ath1", "usb", "eth1", "vlan2", "vlan3", NULL, 0);
-		
+
 		nvram_set_int("btn_rst_gpio", 18|GPIO_ACTIVE_LOW);
 		nvram_set_int("btn_wps_gpio", 11|GPIO_ACTIVE_LOW);
 		nvram_set_int("led_pwr_gpio", 40|GPIO_ACTIVE_LOW);
@@ -3019,12 +3019,12 @@ int init_nvram(void)
 		nvram_set_int("led_lan3_gpio", 42|GPIO_ACTIVE_LOW);
 		nvram_set_int("led_lan4_gpio", 49|GPIO_ACTIVE_LOW);
 #endif
-#if 0		
+#if 0
 		//nvram_set_int("led_usb_gpio", 0);
 		//nvram_set_int("led_usb3_gpio", 0);
 		//nvram_set_int("led_lan_gpio", 49);
 #endif
-		
+
 		/* Etron xhci host:
 		 *	USB2 bus: 1-1
 		 *	USB3 bus: 2-1
@@ -3067,7 +3067,7 @@ int init_nvram(void)
 		break;
 #endif //RTAC82U
 
-#if defined(RTAC55U) || defined(RTAC55UHP) 
+#if defined(RTAC55U) || defined(RTAC55UHP)
 	case MODEL_RTAC55U:	/* fall through */
 	case MODEL_RTAC55UHP:
 		nvram_set("boardflags", "0x100"); // although it is not used in ralink driver, set for vlan
@@ -4923,32 +4923,35 @@ int init_nvram(void)
 
 		/* gpio */
 		/* HW reset, 2 | LOW */
-		nvram_set_int("led_pwr_gpio", 3|GPIO_ACTIVE_LOW);
-		nvram_set_int("btn_led_gpio", 4);	// active high(on)
-		nvram_set_int("led_wan_gpio", 5);
+		nvram_set_int("btn_rst_gpio", 3|GPIO_ACTIVE_LOW);
+		//nvram_set_int("led_pwr_gpio", 3|GPIO_ACTIVE_LOW);
+		//nvram_set_int("btn_led_gpio", 4);	// active high(on)
+		//nvram_set_int("led_wan_gpio", 5);
 		/* MDC_4709 RGMII, 6 */
 		/* MDIO_4709 RGMII, 7 */
-		nvram_set_int("pwr_usb_gpio", 9|GPIO_ACTIVE_LOW);
-		nvram_set_int("reset_switch_gpio", 10);
-		nvram_set_int("btn_rst_gpio", 11|GPIO_ACTIVE_LOW);
+		//nvram_set_int("pwr_usb_gpio", 9|GPIO_ACTIVE_LOW);
+		//nvram_set_int("reset_switch_gpio", 10);
+		//nvram_set_int("btn_rst_gpio", 11|GPIO_ACTIVE_LOW);
 		/* UART1_RX,  12 */
 		/* UART1_TX,  13 */
 		/* UART1_CTS, 14*/
 		/* UART1_RTS, 15 */
-		nvram_set_int("led_usb_gpio", 16|GPIO_ACTIVE_LOW);
-		nvram_set_int("led_usb3_gpio", 17|GPIO_ACTIVE_LOW);
+		//nvram_set_int("led_usb_gpio", 16|GPIO_ACTIVE_LOW);
+		//nvram_set_int("led_usb3_gpio", 17|GPIO_ACTIVE_LOW);
 		//nvram_set_int("led_mmc_gpio",  17|GPIO_ACTIVE_LOW);	/* abort */
-		nvram_set_int("led_wps_gpio", 19|GPIO_ACTIVE_LOW);
+		//nvram_set_int("led_wps_gpio", 19|GPIO_ACTIVE_LOW);
 		if(model == MODEL_RTAC5300 || model == MODEL_RTAC5300R) {
 			nvram_set_int("btn_wltog_gpio", 20|GPIO_ACTIVE_LOW);
 			nvram_set_int("btn_wps_gpio", 18|GPIO_ACTIVE_LOW);
 			nvram_set_int("fan_gpio", 15);
 			nvram_set_int("rpm_fan_gpio", 14|GPIO_ACTIVE_LOW);
 		} else {
-			nvram_set_int("btn_wltog_gpio", 18|GPIO_ACTIVE_LOW);
-			nvram_set_int("btn_wps_gpio", 20|GPIO_ACTIVE_LOW);
+			nvram_set_int("btn_wps_gpio", 17|GPIO_ACTIVE_LOW);
+			//nvram_set_int("btn_wltog_gpio", 18|GPIO_ACTIVE_LOW);
+			//nvram_set_int("btn_wps_gpio", 20|GPIO_ACTIVE_LOW);
 		}
-		nvram_set_int("led_lan_gpio", 21|GPIO_ACTIVE_LOW);	/* FAN CTRL: reserved */
+		nvram_set_int("pwr_usb_gpio", 21|GPIO_ACTIVE_LOW);
+		//nvram_set_int("led_lan_gpio", 21|GPIO_ACTIVE_LOW);	/* FAN CTRL: reserved */
 		/* PA 5V/3.3V switch, 22 */
 		/* SDIO_EN_1P8, 23 | HIGH */
 
@@ -6100,7 +6103,7 @@ int init_nvram3(void)
 		//config_usbbus_bled("led_usb_gpio", "3 4");
 		//config_usbbus_bled("led_usb3_gpio", "1 2");
 		break;
-	
+
 	case MODEL_RTAC58U:
 		/* enable bled */
 		config_netdev_bled("led_wan_gpio", "eth0");
@@ -6537,7 +6540,7 @@ static void sysinit(void)
 	unlink("/etc/resolv.conf");
 	symlink("/tmp/resolv.conf", "/etc/resolv.conf");
 
-#if defined(RTAC55U) || defined(RTAC55UHP) || defined(RTAC58U) ||  defined(RTAC82U)     
+#if defined(RTAC55U) || defined(RTAC55UHP) || defined(RTAC58U) ||  defined(RTAC82U)
 	ratio = 20;
 #elif defined(RTCONFIG_SOC_IPQ8064)
 	ratio = 35;
@@ -6763,7 +6766,7 @@ static void sysinit(void)
 #if defined(RTCONFIG_TEST_BOARDDATA_FILE)
 	start_jffs2();
 #endif
-#endif	
+#endif
 
 
 	if(!nvram_match("nowl", "1")) init_wl(); // for system dependent part
@@ -6860,9 +6863,9 @@ int init_main(int argc, char *argv[])
 #endif
 	{
 		sysinit();
-		
+
 		config_format_compatibility_handler();
-		
+
 		sigemptyset(&sigset);
 		for (i = 0; i < sizeof(initsigs) / sizeof(initsigs[0]); i++) {
 			sigaddset(&sigset, initsigs[i]);
